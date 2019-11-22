@@ -1,0 +1,5 @@
+numpy >=1.15.4
+scipy >=1.2.1
+matplotlib >=3.0.3
+json
+tkinter >=8.6
