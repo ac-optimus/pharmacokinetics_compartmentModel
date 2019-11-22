@@ -59,23 +59,33 @@ class ONE_COMPARTMENT:
     def plot(self, flag, t):
         if flag == "ONE COMPARTMENT-Intravenous Bolus( SINGLE DOSE )":
             C = self.C_bolus(t)
-            plt.plot(t, C)
+            plt.title(flag, size=9)
+            plt.xlabel("Hours", size=9)
+            plt.ylabel("log-Concentration(mg/L)", size=9)
+            plt.plot(t, np.log(C))
   
         elif flag == "ONE COMPARTMENT-Intravenous Bolus( CONSTANT RATE INFLUX)":
-           C = self.const_influx(t)
-           plt.plot(t, C)
+            C = self.const_influx(t)
+            plt.title(flag, size=9)
+            plt.xlabel("Hours", size=9)
+            plt.ylabel("Concentration(mg/L)", size=9)
+            plt.plot(t, C)
+
         elif flag == "ONE COMPARTMENT-ORAL( SINGLE DOSE )":
             C = self.C_oral(t)
+            plt.title(flag, size=9)
+            plt.xlabel("Hours", size=9)
+            plt.ylabel("Concentration(mg/L)", size=9)
             plt.plot(t, C)
+
         elif flag == "ONE COMPARTMENT-ORAL( MULTIPLE DOSE )":
             C = [0]*len(t)
             for j in range(t.shape[0]):
                 C[j] = self.val_t(t[j], self.tau, self.K, self.max_dose )
+            plt.title(flag, size=9)
+            plt.xlabel("Hours", size=9)
+            plt.ylabel("Concentration(mg/L)", size=9)
             plt.plot(t, C)
-        
-        plt.title(flag, size = 9)
-        plt.xlabel("Hours", size = 9)
-        plt.ylabel("Concentration(mg/L)", size=9)
         plt.show()
 
 
@@ -104,9 +114,9 @@ class TWO_COMPARTMENT:
         
         def oral_singleDose(self,interval, A):
             A1, A2, A_gut = A[0], A[1], A[2]
-            eq1 = self.F*self.k_a*self.A_gut + self.k21*A2 - self.k12*A1 - self.K*A1
+            eq1 = self.F*self.k_a*A_gut + self.k21*A2 - self.k12*A1 - self.K*A1
             eq2 = self.k12*A1 - self.k21*A2
-            eq3 = -self.k_a*self.A_gut
+            eq3 = -1*self.k_a*A_gut
             return [eq1, eq2, eq3]
 
         def solver_multiple(self, interval, A):
@@ -130,9 +140,9 @@ class TWO_COMPARTMENT:
                 C2 = A.y[1].flatten()/self.V2
                 # self.A_gut = 0
                 plt.plot(t, np.log(C1))
-                plt.title("C1", size=9)
+                plt.title(flag, size=9)
                 plt.xlabel("Hours", size=9)
-                plt.ylabel("Concentration(mg/L)", size=9)
+                plt.ylabel("log-Concentration(mg/L)", size=9)
             
             elif flag == "TWO COMPARTMENT-ORAL( MULTIPLE DOSE )":
                 
@@ -144,7 +154,7 @@ class TWO_COMPARTMENT:
                 for j in range(t.shape[0]):
                     y[j] = self.val_t(t[j], self.tau, self.max_dose, C1 )
                 plt.plot(t, y)
-                plt.title("C1", size=9)
+                plt.title(flag, size=9)
                 plt.xlabel("Hours", size=9)
                 plt.ylabel("Concentration(mg/L)", size=9)
 
@@ -154,17 +164,17 @@ class TWO_COMPARTMENT:
                 C1 = A.y[0].flatten()
                 C2 = A.y[1].flatten()
                 plt.plot(t, C1)
-                plt.title("C1", size=9)
+                plt.title(flag, size=9)
                 plt.xlabel("Hours", size=9)
                 plt.ylabel("Concentration(mg/L)", size=9)                
                 
             elif flag == "TWO COMPARTMENT-ORAL( SINGLE DOSE )":
                 A = solve_ivp(self.oral_singleDose, (0,25), (self.A1, self.A2, self.A_gut), t_eval = t)
                 C1 = A.y[0].flatten()/self.V1
-                C2 = A.y[1].flatten()/self.V2
+
                 # self.A_gut = 0
                 plt.plot(t, C1)
-                plt.title("C1", size=9)
+                plt.title(flag, size=9)
                 plt.xlabel("Hours", size=9)
                 plt.ylabel("Concentration(mg/L)", size=9)
             plt.show()

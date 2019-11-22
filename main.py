@@ -66,7 +66,7 @@ def sel():
    elif txt == 7:
         model = "TWO COMPARTMENT-ORAL( MULTIPLE DOSE )"
 
-   messagebox.showinfo(model, "detials of the compartment here. Press OK to see the plots!")
+   messagebox.showinfo(model, "Equations solved. Press OK to see the plots!")
 
    plot_concentration(model)
 
