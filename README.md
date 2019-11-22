@@ -15,8 +15,12 @@ pip install requirements.txt
 ```
 
 ### Usage
+
+
+
 ```
-python main.py
+Update the constants in constants.json
+run python main.py
 ```
 
 #### Select the option based on desired model --
