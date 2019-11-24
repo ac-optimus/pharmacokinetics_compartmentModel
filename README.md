@@ -5,19 +5,25 @@
 TODO
 
 ### Setup
+#### clone the project --
+```
+git clone https://github.com/ac-optimus/pharmacokinetics_compartmentModel.git
+```
 ####  Install tkinter --
 ```
 sudo apt-get install python3-tk
 ```
 #### Instal other dependencies --
 ```
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 
 ### Usage
-```
-python main.py
-```
+
+
+
+* Update the constants in constants.json <br /> 
+* run ```python main.py```
 
 #### Select the option based on desired model --
 ![Alt text](interface/pic.png "Optional Title")
