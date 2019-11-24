@@ -4,6 +4,10 @@
 
 TODO
 
+## Model Kinetics --
+![Alt text](interface/s1.png "Optional Title")
+![Alt text](interface/s2.png "Optional Title")
+- Note: For multi-dose kinetics stay tuned!
 ### Setup
 #### clone the project --
 ```
@@ -24,6 +28,8 @@ pip install -r requirements.txt
 
 * Update the constants in constants.json <br /> 
 * run ```python main.py```
+
+
 
 #### Select the option based on desired model --
 ![Alt text](interface/pic.png "Optional Title")
