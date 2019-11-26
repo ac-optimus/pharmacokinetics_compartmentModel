@@ -2,8 +2,8 @@
 
 ### Description
 
-TODO
-
+This repository containts mathematical modelling of drug dilevery in body(```pharmocokinetics``` : what the body does to
+the drug). Specifically, different compartment models which are used to model the concentration of drug as it passes through the body with time. Further an interactive GUI is provided to select among diffent models.
 ## Model Kinetics --
 ![Alt text](interface/s1.png "Optional Title")
 ![Alt text](interface/s2.png "Optional Title")
